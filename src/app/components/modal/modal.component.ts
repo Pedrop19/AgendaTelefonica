@@ -35,9 +35,17 @@ export class ModalComponent {
     ]
   });
 
-  checkForm() {
-    if (this.telefonoController.valid && this.nombreController.valid) {
+  checkForm(isAdd: boolean) {
+    if (this.telefonoController.valid && this.nombreController.valid && isAdd) {
       this.addContacto(this.nombreController.value, this.telefonoController.value);
+      console.log(this.listContactos());
+      console.log(this.nombreController.value);
+      console.log(this.telefonoController.value);
+      this.telefonoController.reset();
+      this.nombreController.reset();
+      return true;
+    }else{
+      this.updateContacto(this.nombreController.value, this.telefonoController.value);
       console.log(this.listContactos());
       console.log(this.nombreController.value);
       console.log(this.telefonoController.value);
@@ -66,8 +74,17 @@ export class ModalComponent {
   }
 
   removeAllContactos() {
+    this.listContactos.update(() => []);
+  }
+
+  updateContacto(name: string, phone: string) {
     let listadoContactos = this.listContactos();
-    listadoContactos = [];
+    listadoContactos.map((contact) => {
+      if (contact.telefono === phone) {
+        contact.nombre = name;
+        contact.telefono = phone;
+      }
+    });
   }
 }
 

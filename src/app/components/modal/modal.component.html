@@ -22,7 +22,7 @@
 
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-            <button type="button" class="btn btn-primary" (click)="checkForm()" data-bs-dismiss="modal" aria-label="Close">Guardar Cambios</button>
+            <button type="button" class="btn btn-primary" (click)="checkForm(true)" data-bs-dismiss="modal">Guardar Cambios</button>
         </div>
       </div>
     </div>
@@ -41,7 +41,7 @@
           <p class="text-white">Esta accion no se puede deshacer</p>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-primary">Aceptar</button>
+          <button type="button" (click)="removeAllContactos()"  class="btn btn-primary" data-bs-dismiss="modal">Aceptar</button>
           <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
         </div>
       </div>
@@ -60,18 +60,18 @@
           <p class="text-white">Edita el contacto seleccionado</p>
           <div class="input-group mb-2">
             <span class="input-group-text">Nombre</span>
-            <input type="text" aria-label="First name" class="form-control" placeholder="Jhon">
+            <input type="text" [formControl]="nombreController"  aria-label="First name" class="form-control" placeholder="Jhon">
           </div>
           <p class="text-white" style="font-size: 13px;">El nombre no puede estar vacio</p>
           <div class="input-group">
             <span class="input-group-text">Tel&eacute;fono</span>
-            <input type="text" aria-label="First name" class="form-control" placeholder="666555444">
+            <input type="text" [formControl]="telefonoController" aria-label="First name" class="form-control" placeholder="666555444">
           </div>
-          <p class="text-white" style="font-size: 13px;">El tel&eacute;fono tiene que tener 9 caracteres y empezar por 6 o 7</p>
+          <p class="text-white"  style="font-size: 13px;">El tel&eacute;fono tiene que tener 9 caracteres y empezar por 6 o 7</p>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-          <button type="button" class="btn btn-primary">Guardar Cambios</button>
+          <button type="button" class="btn btn-primary" (click)="checkForm(false)" data-bs-dismiss="modal">Guardar Cambios</button>
         </div>
       </div>
     </div>

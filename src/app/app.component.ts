@@ -35,14 +35,6 @@ export class AppComponent {
     });
   }
 
-  updateContacto(name: string, phone: string) {
-    let listadoContactos = this.listContactos();
-    listadoContactos.map((contact) => {
-      if (contact.telefono === phone) {
-        contact.nombre = name;
-        contact.telefono = phone;
-      }
-    });
-  }
+
   
 }
